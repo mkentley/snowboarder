@@ -5,7 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class FinishLine : MonoBehaviour
 {
-[SerializeField] float loadDelay=2.0f;
+[SerializeField] ParticleSystem finishEffect;
+[SerializeField] float loadDelay=10.0f;
 [SerializeField] string finishSceneName = "FinishScene";
 
     private const string Message = "You Finished!";
@@ -13,6 +14,7 @@ public class FinishLine : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other)
    {
      if (other.tag == "Player") {
+       finishEffect.Play();
        Invoke("finishScene", loadDelay);
      }
    }
